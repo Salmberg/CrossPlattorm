@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
 * {
     margin: 0px;
     padding: 0px;
@@ -8,16 +11,15 @@ body {
 }
 
 .grid {
-    border: 1px solid gray;
+   
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns:1fr ;
-    grid-template-rows: 8em 1fr 3em;
+    grid-template-rows: 8em 1fr 4em;
 }
 
 .grid > div {
-    border: 1px solid gray;
     margin: 0px;
 }
 
@@ -27,17 +29,66 @@ body {
 
 .header {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between; /* Aligns content at the start and end of the container */
+    align-items: center; /* Aligns items vertically */
+    font-size: xx-large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    top: 0;
+    padding: 20px; /* Add some padding for spacing */
+    background-color: black;
 }
 
-.header > div {
-    flex: auto;
-    background-color: azure;
+#name {
+    display: flex;
+    justify-content: space-between; /* Aligns content at the start and end of the container */
+    align-items: center; /* Aligns items vertically */
+    font-size: xx-large;
+    font-family: 'Poppins', sans-serif;
+    top: 0;
+    padding: 10px; /* Add some padding for spacing */
+    background-color: black;
+    color: wheat;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row; /* Stacks list items in a row */
+    justify-content: center; /* Centers list items vertically */
+    align-items: center; /* Centers list items horizontally */
+    list-style: none;
+    margin: 10; /* Remove default margin for the ul */
+    padding: 0; /* Remove default padding for the ul */
+    
+}
+
+nav ul li {
+    margin: 10px; /* Add margin between list items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: wheat;
+    font-size: large;
 }
 
 .content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: lightgray;
+    background-color: black;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    gap: 10px;
+    background-color: black;
+}
+
+.fa-brands {
+    color: white;
+}
+.fab {
+    color: white;
 }
