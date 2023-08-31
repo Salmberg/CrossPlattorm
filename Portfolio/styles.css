@@ -28,6 +28,8 @@ h2 {
     margin: 0; /* Remove default margin for the heading */
 }
 
+
+
 nav ul {
     display: flex;
     flex-direction: row; /* Stacks list items in a row */
