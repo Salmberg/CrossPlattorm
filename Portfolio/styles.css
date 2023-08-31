@@ -1,0 +1,116 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Set a minimum height for the body to cover the viewport */
+    margin: 0; /* Remove default margin to ensure full viewport coverage */
+}
+
+main {
+    flex: 1; /* Allow the main content to grow and take up remaining space */
+    background-color: black;
+    padding: 20px; /* Add some padding for spacing */
+}
+
+
+.Header {
+    display: flex;
+    justify-content: space-between; /* Aligns content at the start and end of the container */
+    align-items: center; /* Aligns items vertically */
+    font-size: xx-large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    top: 0;
+    padding: 20px; /* Add some padding for spacing */
+}
+
+h2 {
+    color: bisque;
+    margin: 0; /* Remove default margin for the heading */
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row; /* Stacks list items in a row */
+    justify-content: center; /* Centers list items vertically */
+    align-items: flex-end; /* Centers list items horizontally */
+    list-style: none;
+    margin: 0; /* Remove default margin for the ul */
+    padding: 0; /* Remove default padding for the ul */
+    
+}
+
+nav ul li {
+    margin: 10px 20px; /* Add margin between list items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: wheat;
+    font-size: medium;
+}
+
+  
+  .firstApp, .secondApp, .thirdApp {
+    display: flex;
+    justify-content: space-between; /* Distribute images along the row */
+    align-items: center; /* Center images vertically */
+    margin-bottom: 20px;
+}
+
+
+  .firstAppImage1 img {
+    max-width: 100%; /* Make sure the image doesn't exceed its container's width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any extra spacing below the image */
+    margin: 50px auto; /* Center the image horizontally */
+    width: 30%;
+    margin-right: 20px;
+    
+}
+
+.firstAppImage2 img {
+    max-width: 100%; /* Make sure the image doesn't exceed its container's width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any extra spacing below the image */
+    margin: 50px auto; /* Center the image horizontally */
+    width: 30%;
+    margin-left: 20px;
+}
+
+.secondAppImage1 img {
+    max-width: 100%; /* Make sure the image doesn't exceed its container's width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any extra spacing below the image */
+    margin: 50px auto; /* Center the image horizontally */
+    width: 30%;
+    margin-right: 20px;
+}
+
+.secondAppImage2 img {
+    max-width: 100%; /* Make sure the image doesn't exceed its container's width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any extra spacing below the image */
+    margin: 50px auto; /* Center the image horizontally */
+    width: 30%;
+    margin-left: 20px;
+}
+
+.thirdAppImage1 img {
+    max-width: 100%; /* Make sure the image doesn't exceed its container's width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any extra spacing below the image */
+    margin: 50px auto; /* Center the image horizontally */
+    width: 30%;
+    margin-right: 20px;
+}
+
+.thirdAppImage2 img {
+    max-width: 100%; /* Make sure the image doesn't exceed its container's width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any extra spacing below the image */
+    margin: 50px auto; /* Center the image horizontally */
+    width: 30%;
+    margin-left: 20px;
+}
+
+

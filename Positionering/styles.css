@@ -1,0 +1,41 @@
+div {
+    border: 1px solid grey;
+    width: 200px;
+    padding: 4px;
+    margin: 4px;
+}
+
+#div1 {
+    position: fixed;
+    right: 10px;
+}
+
+#div2 {
+    position: relative;
+    left: 40px;
+    top: 20px;
+}
+
+#div3 {
+    position: absolute;
+    left: 150px;
+    top: 5px;
+}
+
+#Popup {
+    position: fixed;
+    background-color: yellow;
+    height: 40px;
+    top: 100px;
+    margin: auto;
+    left: 0px;
+    right: 0px;
+}
+
+#Close {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}

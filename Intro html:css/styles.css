@@ -1,0 +1,17 @@
+h2 {
+    background-color: blue;
+}
+
+
+a {
+    background-color: aqua;
+}
+
+#headline {
+    border: 3px solid black;
+}
+
+.text a {
+    border: 2px solid grey;
+    padding: 2px;
+}
