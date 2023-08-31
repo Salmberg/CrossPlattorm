@@ -28,27 +28,25 @@ h2 {
     margin: 0; /* Remove default margin for the heading */
 }
 
-
-
 nav ul {
     display: flex;
     flex-direction: row; /* Stacks list items in a row */
     justify-content: center; /* Centers list items vertically */
-    align-items: flex-end; /* Centers list items horizontally */
+    align-items: center; /* Centers list items horizontally */
     list-style: none;
-    margin: 0; /* Remove default margin for the ul */
+    margin: 10; /* Remove default margin for the ul */
     padding: 0; /* Remove default padding for the ul */
     
 }
 
 nav ul li {
-    margin: 10px 20px; /* Add margin between list items */
+    margin: 10px; /* Add margin between list items */
 }
 
 nav ul li a {
     text-decoration: none;
     color: wheat;
-    font-size: medium;
+    font-size: large;
 }
 
   
