@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Poppins:wght@700&display=swap');
 @import url('https://fonts.cdnfonts.com/css/made-outer-sans-alt');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Bebas+Neue&family=Grape+Nuts&family=Poppins:wght@700&display=swap');
 * {
     margin: 0px;
     padding: 0px;
@@ -12,7 +13,6 @@ body {
 }
 
 .grid {
-   
     width: 100%;
     height: 100%;
     display: grid;
@@ -39,8 +39,6 @@ body {
     background-color: black;
 }
 
-
-
 #name {
     display: flex;
     justify-content: space-between; /* Aligns content at the start and end of the container */
@@ -53,11 +51,66 @@ body {
     color: white;
     line-height: 1;
 }
+#text {
+    
+    line-height: 1; /* Adjust the line-height to reduce spacing between lines */
+}
+
+.line2 {
+    font-size: 38px; /* Adjust the font size as needed */
+    color: white; /* Change the color as needed */
+    
+}
+
+.line3 {
+    font-size: 38px; /* Adjust the font size as needed */
+    color: #6b21a8; /* Change the color as needed */
+    
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: black;
+    color: white;
+    font-size: 70px;
+    padding-left: 30px;
+    font-family: 'Bebas Neue', sans-serif;;
+    
+}
 
 .image img {
     display: flex;
     width: 200px; /* Adjust the width as needed */
     height: auto; /* This ensures the aspect ratio is maintained */
+    background-color: black;
+    
+}
+
+.image {
+    display: flex; /* Use flexbox to center the image */
+    justify-content: center; /* Horizontally center-align */
+    align-items: center; /* Vertically center-align */
+    background-color: black;
+    height: 100%; /* Ensure the container takes the full height */
+    padding-right: 40px;
+}
+
+
+/* Media query for screens with a max-width of 768px (typical for mobile) */
+@media (max-width: 768px) {
+    .image img {
+        width: 80%; /* Adjust the width as needed for mobile */
+    }
+}
+
+/* Media query for screens with a min-width of 769px (typical for desktop) */
+@media (min-width: 769px) {
+    .image img {
+        width: 70%; /* Adjust the width as needed for desktop */
+    }
 }
 
 nav ul {
@@ -79,14 +132,6 @@ nav ul li a {
     text-decoration: none;
     color: white;
     font-size: large;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    background-color: wheat;
 }
 
 
