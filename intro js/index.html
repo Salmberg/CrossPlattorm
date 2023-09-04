@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dela på notan</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <h2>Dela på notan</h2>
+    <section id="inputForm">
+        <section>
+            <input type="text" id="sum">
+            <label for="sum">Summa</label>
+        </section>
+        <section>
+            <input type="text" id="numberOfPeople">
+            <label for="numberOfPeople">Personer</label>
+        </section>
+        <section>
+            <input type="text" id="tip">
+            <label for="tip">Dricks</label>
+        </section>
+        <button id="calculateButton">Räkna ut</button>
+    </section>
+    
+    <section id="showSum" class="hide">
+        <h2>Varje person ska betala:</h2>
+        <h3 id="peopleSum"></h3>
+
+        <button id="backButton">Tillbaka</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
