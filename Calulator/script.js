@@ -6,43 +6,57 @@ const resultBlock = document.getElementById('result_block')
 let firstInput = true;
 
 
-
-for(const buttonElement of buttonElements) {
+// Loop through each button element and add a click event listener.
+for (const buttonElement of buttonElements) {
     buttonElement.addEventListener('click', () => {
+        // Call the buttonListener function when a button is clicked.
         buttonListener(buttonElement);
-    })
+    });
 }
 
+// Define a function to handle button click events.
 const buttonListener = (button) => {
-    if(button.innerText == '=') {
+    if (button.innerText == '=') {
+        // If the clicked button has '=' text, perform the calculation.
         console.log('Calculate button clicked');
         calculate();
     } else {
+        // Otherwise, display the button's text as input.
         display(button.innerText);
     }
 }
 
+// Define a function to handle the 'Clear' button click event.
 const clearButtonListener = () => {
-    resultList.innerHTML = ''; // Clear the content of resultList
-    clearResult(); // Clear the result display
-    firstInput = true; // Reset firstInput to true
+    // Clear the content of the result list.
+    resultList.innerHTML = '';
     
-    // Check if result_list has child elements and toggle the visibility of result_block
+    // Clear the result display.
+    clearResult();
+    
+    // Reset the firstInput flag to true.
+    firstInput = true;
+
+    // Check if the result_list has child elements and toggle the visibility of result_block accordingly.
     if (resultList.children.length > 0) {
-        document.getElementById('result_block').classList.remove('hide');
+        resultBlock.classList.remove('hide');
     } else {
-        document.getElementById('result_block').classList.add('hide');
+        resultBlock.classList.add('hide');
     }
 }
+
+// Add a click event listener to the 'Clear' button.
 clearButton.addEventListener('click', clearButtonListener);
 
-
+// Define a function to clear the result display.
 const clearResult = () => {
-    result.innerText= '';
+    result.innerText = '';
 }
 
+// Define a function to display input values.
 const display = (value) => {
     if (firstInput) {
+        // If it's the first input, clear the result display.
         clearResult();
         firstInput = false;
     }
@@ -50,16 +64,24 @@ const display = (value) => {
     result.innerText += value;
 }
 
+// Define a function to perform the calculation.
 const calculate = () => {
-    let res = eval(result.innerText); // byt ut!
+    // Evaluate the expression in the result display and store the result in 'res'.
+    let res = eval(result.innerText); // Note: Using 'eval' can be a security risk.
+    
+    // Display the result with '=' sign.
     display('=' + res);
+    
+    // Reset the firstInput flag to true.
     firstInput = true;
+
+    // Add the result to the result list.
     displayResult(result.innerText);
-   
 }
 
- const displayResult = (value) => {
+// Define a function to display the result in the result list.
+const displayResult = (value) => {
     const listItem = document.createElement('li');
     listItem.innerText = value;
-    resultList.appendChild(listItem)
+    resultList.appendChild(listItem);
 }
