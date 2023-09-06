@@ -1,4 +1,8 @@
-
+.calculator-container {
+    display: flex;
+    justify-content: space-around; 
+    margin: 10px;
+}
 
 #calculator {
     background-color: black;
@@ -13,6 +17,7 @@
 #result_block {
     background-color: bisque;
     border-radius: 5px;
+    padding: 10px;
 }
 
 #result {
