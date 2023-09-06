@@ -1,6 +1,8 @@
 const buttonElements = document.getElementsByClassName('button');
 const resultList = document.getElementById('result_list');
 const result = document.getElementById('result');
+const clearButton = document.getElementById('clearButton')
+const resultBlock = document.getElementById('result_block')
 let firstInput = true;
 
 
@@ -20,6 +22,21 @@ const buttonListener = (button) => {
     }
 }
 
+const clearButtonListener = () => {
+    resultList.innerHTML = ''; // Clear the content of resultList
+    clearResult(); // Clear the result display
+    firstInput = true; // Reset firstInput to true
+    
+    // Check if result_list has child elements and toggle the visibility of result_block
+    if (resultList.children.length > 0) {
+        document.getElementById('result_block').classList.remove('hide');
+    } else {
+        document.getElementById('result_block').classList.add('hide');
+    }
+}
+clearButton.addEventListener('click', clearButtonListener);
+
+
 const clearResult = () => {
     result.innerText= '';
 }
@@ -38,17 +55,11 @@ const calculate = () => {
     display('=' + res);
     firstInput = true;
     displayResult(result.innerText);
+   
 }
-
-
-//Ska köras i calculate funktionen 
-// i denna --> displayResult(result.innerText);
 
  const displayResult = (value) => {
     const listItem = document.createElement('li');
     listItem.innerText = value;
     resultList.appendChild(listItem)
 }
-
-
-
