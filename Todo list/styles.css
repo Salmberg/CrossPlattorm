@@ -23,6 +23,11 @@
     align-items: center; /* Center content horizontally */
 }
 
+#todo_list li {
+    position: relative;
+    margin-bottom: 10px; /* Adjust the spacing between list items */
+    padding: 5px; /* Add padding to create space around each item */
+}
 
 #add_block {
     border: grey solid 2px;
@@ -32,6 +37,11 @@
     width: 160px;
     padding: 10px;
     margin: 0 10px; /* Adjust margins */
+}
+
+#add_block button {
+    margin-top: 10px;
+    margin-left: 55px;
 }
 
 #todo_list {
@@ -46,6 +56,6 @@
 
 .checked {
     text-decoration: line-through; /* Add a line-through to indicate checked items */
-    color: #888; /* Adjust color for checked items */
+    color: #3bc94e; /* Adjust color for checked items */
     /* You can add more styles as needed */
 }
