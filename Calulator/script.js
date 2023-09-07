@@ -108,6 +108,3 @@ const displayResult = (value) => {
     listItem.innerText = value;
     resultList.appendChild(listItem);
 }
-
- // Add the result to the result list.
- //displayResult(result.innerText);
