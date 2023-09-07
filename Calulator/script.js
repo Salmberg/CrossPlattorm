@@ -6,7 +6,6 @@ const clearButton = document.getElementById('clearButton')
 const resultBlock = document.getElementById('result_block')
 let firstInput = true;
 
-
 // Loop through each button element and add a click event listener.
 for (const buttonElement of buttonElements) {
     buttonElement.addEventListener('click', () => {
@@ -14,7 +13,6 @@ for (const buttonElement of buttonElements) {
         buttonListener(buttonElement);
     });
 }
-
 // Define a function to handle button click events.
 const buttonListener = (button) => {
     if (button.innerText == '=') {
@@ -100,8 +98,6 @@ const calculate = () => {
         // You can display an error message or take appropriate action here.
     }
 }
-
-
 // Define a function to display the result in the result list.
 const displayResult = (value) => {
     const listItem = document.createElement('li');
