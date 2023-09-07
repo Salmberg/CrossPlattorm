@@ -1,12 +1,22 @@
 const addTodoButton = document.getElementById("addTodoButton");
 const addBlock = document.getElementById("add_block");
 const addButton = document.getElementById("addButton");
+const closeButton = document.getElementById("closeButton");
+const clearListButton = document.getElementById("clearListButton");
 const todoList = document.getElementById("todo_list");
 
 addTodoButton.addEventListener("click", () => {
     // Show the add_block
     addBlock.classList.remove("hide");
 });
+
+closeButton.addEventListener('click', () => {
+    addBlock.classList.add("hide");
+})
+
+clearListButton.addEventListener('click', () => {
+    todoList.innerHTML = '';
+})
 
 addButton.addEventListener("click", () => {
     // Get the input value
