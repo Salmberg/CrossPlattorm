@@ -43,3 +43,9 @@
     padding: 12px; 
     margin: 0;     
 }
+
+.checked {
+    text-decoration: line-through; /* Add a line-through to indicate checked items */
+    color: #888; /* Adjust color for checked items */
+    /* You can add more styles as needed */
+}

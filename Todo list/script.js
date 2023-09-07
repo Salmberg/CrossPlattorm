@@ -27,3 +27,24 @@ addButton.addEventListener("click", () => {
         addBlock.classList.add("hide");
     }
 });
+
+
+todoList.addEventListener("click", (event) => {
+    // Check if a list item was clicked
+    if (event.target.tagName === "LI") {
+        // Toggle the "checked" class to mark/unmark the item
+        event.target.classList.toggle("checked");
+    }
+});
+
+// Function to add a new todo item
+function addTodoItem(text) {
+    // Create a new list item
+    const listItem = document.createElement("li");
+    listItem.textContent = text;
+
+    // Append the list item to the todo_list
+    todoList.appendChild(listItem);
+}
+
+
