@@ -8,7 +8,6 @@
     margin: 10px;
     padding: 10px;
 }
-
 #todo {
     border: grey solid 2px;
     border-radius: 5px;
@@ -22,7 +21,6 @@
     justify-content: flex-start; /* Align content to the top */
     align-items: center; /* Center content horizontally */
 }
-
 #todo_list li {
     position: relative;
     margin-bottom: 10px; /* Adjust the spacing between list items */
