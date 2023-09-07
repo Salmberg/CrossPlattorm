@@ -52,7 +52,7 @@ clearButton.addEventListener('click', clearButtonListener);
 // Define a function to clear the calculator's result.
 function clearCalculator() {
     // Set the result display to 0 or any initial value you prefer.
-    document.getElementById("result").textContent = "Hej";
+    document.getElementById("result").textContent = "0";
     console.log('C button clicked')
     firstInput = true;
 }
