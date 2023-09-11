@@ -1,10 +1,16 @@
 const apiUrl = "https://opentdb.com/api.php?amount=10&difficulty=easy";
 
 const button = document.querySelector('#fetch');
+let isFirstClick = true;
 
 
 button.addEventListener('click', async e => {
     console.log('1. Click');
+
+    if (isFirstClick) {
+        button.textContent = 'New questions';
+        isFirstClick = false;
+    }
 
     const response = await fetch(apiUrl);
     console.log('2. got response:', response)
