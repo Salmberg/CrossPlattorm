@@ -1,4 +1,4 @@
-const apiUrl = "https://opentdb.com/api.php?amount=10&category=18&difficulty=easy";
+const apiUrl = "https://opentdb.com/api.php?amount=10&difficulty=easy";
 
 const button = document.querySelector('#fetch');
 
@@ -15,11 +15,12 @@ button.addEventListener('click', async e => {
     const questions = quisData.results;
     createQuestions(questions);
 
-
 })
 
 const createQuestions = (questions) => {
     const questionContainer = document.querySelector('#questions');
+
+    questionContainer.innerHTML = '';
 
     questions.forEach(question => {
         const questionElement = createQuestonElement(question);
