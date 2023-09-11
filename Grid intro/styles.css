@@ -149,3 +149,36 @@ nav ul li a {
 .fab {
     color: white;
 }
+
+/* CSS for the hamburger menu */
+.menu-icon {
+    display: none; /* Initially hide the menu icon on larger screens */
+    cursor: pointer;
+}
+
+#menu-toggle {
+    background-color: white;
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Media query for screens with a max-width of 768px (typical for mobile) */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Display the menu icon on mobile screens */
+        /* Add styling for the hamburger icon (e.g., bars) */
+    }
+    /* Additional styles for the expanded menu (you can create a class for this) */
+    nav {
+        display: none; /* Initially hide the navigation links on mobile */
+        /* Add styling for the expanded menu */
+    }
+}
+
+
+   
+  
+
+
+    
