@@ -1,17 +1,47 @@
 const searchButton = document.getElementById('search_button');
 const searchField = document.getElementById('search_text');
 const mainElement = document.querySelector('main');
+const overlay = document.getElementById('overlay');
+const overlayImg = document.querySelector('#overlay img');
+const overlayTitle = document.querySelector('#overlay figcaption');
+
 
 searchButton.addEventListener('click', async () => {
 
     //1.hämta bildinfo från api
-
-    getImages();
+    const imageData = await getImages();
 
     //2.updatera UI- skapa bilderna
+    updateUI(imageData);
 
 })
 
+const updateUI = (data) => {
+
+    data.photos.photo.forEach(img => {
+        const imageElement = document.createElement('img');
+        imageElement.setAttribute('src', imageURL(img, 'thumb'));
+        imageElement.setAttribute('alt', img.title);
+
+        imageElement.addEventListener('click', () =>{
+            openLightBox(img.title, imageURL(img, 'large'));
+        })
+        mainElement.appendChild(imageElement);
+
+    });
+}
+
+const openLightBox = (title, URL) =>{
+
+    overlayImg.setAttribute('src', URL);
+    overlayImg.setAttribute('alt', title);
+
+    overlayTitle.innerHTML = title;
+    overlay.classList.toggle('show');
+}
+overlay.addEventListener('click', () => {
+    overlay.classList.toggle('show');
+})
 
 const getImages = async () => {
 
@@ -25,6 +55,15 @@ const getImages = async () => {
     const response = await fetch(url);
     const imageData = await response.json();
 
-    console.log(imageData);
+    return(imageData);
+    //console.log(imageData);
 
+}
+
+const imageURL = (img, size) => {
+    let sizeSuffix = 'q';
+    if(size== 'large') {sizeSuffix = 'b'};
+
+    const url = `https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}_${sizeSuffix}.jpg`
+    return url;
 }
