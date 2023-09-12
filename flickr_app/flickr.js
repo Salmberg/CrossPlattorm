@@ -6,15 +6,27 @@ const overlayImg = document.querySelector('#overlay img');
 const overlayTitle = document.querySelector('#overlay figcaption');
 
 
+let currentPage = 1;
+let isLoading = false;
+
+
 searchButton.addEventListener('click', async () => {
 
+    mainElement.innerHTML = '';
+    loadPage();
+})
+
+const loadPage = async () => {
+    isLoading = true;
     //1.hämta bildinfo från api
     const imageData = await getImages();
 
     //2.updatera UI- skapa bilderna
     updateUI(imageData);
 
-})
+    isLoading = false;
+
+}
 
 const updateUI = (data) => {
 
@@ -29,6 +41,7 @@ const updateUI = (data) => {
         mainElement.appendChild(imageElement);
 
     });
+
 }
 
 const openLightBox = (title, URL) =>{
@@ -50,7 +63,7 @@ const getImages = async () => {
     const text = searchField.value;
     const apiKey = 'e4b7593023bc09e6ad8094671d8433f1';
 
-    const url = `${baseURL}?method=${method}&text=${text}&api_key=${apiKey}&format=json&nojsoncallback=1`;
+    const url = `${baseURL}?method=${method}&page=${currentPage}=&text=${text}&api_key=${apiKey}&format=json&nojsoncallback=1`;
       
     const response = await fetch(url);
     const imageData = await response.json();
@@ -67,3 +80,23 @@ const imageURL = (img, size) => {
     const url = `https://live.staticflickr.com/${img.server}/${img.id}_${img.secret}_${sizeSuffix}.jpg`
     return url;
 }
+
+const nextPage = async () => {
+    currentPage++;
+
+    loadPage();
+
+}
+
+
+//laddar en ny sida om man scrollar längst ned
+window.addEventListener('scroll', () => {
+    const { scrollTop, scrollHeight, clientHeight} = document.documentElement;
+
+    if (scrollTop + clientHeight >= scrollHeight) {
+        if(!isLoading){
+        nextPage();
+        }
+    }
+
+})
