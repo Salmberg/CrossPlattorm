@@ -11,15 +11,14 @@ let isLoading = false;
 
 
 searchButton.addEventListener('click', async () => {
-
     clearPage();
     loadPage();
 })
 
+
 const clearPage = () => {
     mainElement.innerHTML = '';
     currentPage = 1;
-
 }
 
 const loadPage = async () => {
@@ -31,7 +30,6 @@ const loadPage = async () => {
     updateUI(imageData);
 
     isLoading = false;
-
 }
 
 const updateUI = (data) => {
@@ -47,7 +45,6 @@ const updateUI = (data) => {
         mainElement.appendChild(imageElement);
 
     });
-
 }
 
 const openLightBox = (title, URL) =>{
@@ -91,9 +88,7 @@ const nextPage = async () => {
     currentPage++;
 
     loadPage();
-
 }
-
 
 //laddar en ny sida om man scrollar längst ned
 window.addEventListener('scroll', () => {
@@ -104,5 +99,4 @@ window.addEventListener('scroll', () => {
         nextPage();
         }
     }
-
 })
