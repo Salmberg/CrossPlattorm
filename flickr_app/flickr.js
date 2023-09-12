@@ -12,9 +12,15 @@ let isLoading = false;
 
 searchButton.addEventListener('click', async () => {
 
-    mainElement.innerHTML = '';
+    clearPage();
     loadPage();
 })
+
+const clearPage = () => {
+    mainElement.innerHTML = '';
+    currentPage = 1;
+
+}
 
 const loadPage = async () => {
     isLoading = true;
