@@ -1,6 +1,13 @@
 const categoryItems = document.querySelectorAll('.category-item');
 const difficultyItems = document.querySelectorAll('.difficulty-item');
+const startButton = document.getElementById('startButton');
+const questionsContainer = document.querySelector('.questions-container');
+const nextButton = document.getElementById('nextButton');
 
+let questionsData = [];
+let currentQuestionIndex = 0;
+
+// Function to handle item click (category or difficulty)
 function handleItemClick(event) {
     const item = event.target;
 
@@ -27,7 +34,6 @@ difficultyItems.forEach(item => {
     item.addEventListener('click', handleItemClick);
 });
 
-
 // Function to fetch questions from the API
 async function fetchQuestions() {
     const apiUrl = 'https://opentdb.com/api.php?amount=10'; // Adjust the URL and parameters as needed
@@ -43,37 +49,39 @@ async function fetchQuestions() {
 }
 
 // Function to start quiz with selected category and difficulty
-document.getElementById('startButton').addEventListener('click', async () => {
+startButton.addEventListener('click', async () => {
     const selectedCategory = document.querySelector('.category-item[style="color: green;"]');
     const selectedDifficulty = document.querySelector('.difficulty-item[style="color: green;"]');
-    
+
     if (selectedCategory && selectedDifficulty) {
-       // Hide the quiz-container
-       const quizContainer = document.querySelector('.quiz-container');
-       quizContainer.classList.add('hide');
+        // Hide the quiz-container and show the next button
+        const quizContainer = document.querySelector('.quiz-container');
+        quizContainer.classList.add('hide');
+        questionsContainer.classList.remove('hide');
 
-       // Show the questions-container
-       const questionsContainer = document.querySelector('.questions-container');
-       questionsContainer.classList.remove('hide');
+        // Fetch questions from the API
+        questionsData = await fetchQuestions();
+        currentQuestionIndex = 0;
 
-       // Fetch questions from the API
-       const questions = await fetchQuestions();
-
-       // Create and append question elements with options
-       questions.forEach((questionData, index) => {
-           const question = questionData.question;
-           const options = [...questionData.incorrect_answers, questionData.correct_answer].sort(() => Math.random() - 0.5);
-
-           const questionElement = createQuestion(question, options);
-
-           // Append questions to the questions container
-           questionsContainer.appendChild(questionElement);
-       });
+        // Display the first question
+        displayCurrentQuestion();
     } else {
         alert('Please select a Category and Difficulty before starting the quiz.');
     }
 });
 
+// Function to display the current question within the questions container
+function displayCurrentQuestion() {
+    const questionData = questionsData[currentQuestionIndex];
+    const question = questionData.question;
+    const options = [...questionData.incorrect_answers, questionData.correct_answer].sort(() => Math.random() - 0.5);
+
+    const questionElement = createQuestion(question, options);
+
+    // Clear the questions container and append the new question
+    questionsContainer.innerHTML = '';
+    questionsContainer.appendChild(questionElement);
+}
 
 // Function to generate a question element with options
 function createQuestion(questionText, options) {
@@ -87,20 +95,22 @@ function createQuestion(questionText, options) {
     options.forEach((optionText, index) => {
         const optionElement = document.createElement('div');
         optionElement.classList.add('option');
-        
+
         const radioInput = document.createElement('input');
         radioInput.type = 'radio';
         radioInput.name = 'question' + index; // Give each question a unique name
         radioInput.value = optionText;
-        
+
         const optionLabel = document.createElement('label');
         optionLabel.textContent = optionText;
 
         optionElement.appendChild(radioInput);
         optionElement.appendChild(optionLabel);
-        
+
         questionElement.appendChild(optionElement);
     });
 
     return questionElement;
 }
+
+
