@@ -15,8 +15,8 @@ button.addEventListener('click', async e => {
     const response = await fetch(apiUrl);
     console.log('2. got response:', response)
 
-    const quisData = await response.json();
-    console.log('3. got data: ', quisData);
+    const quizData = await response.json();
+    console.log('3. got data: ', quizData);
 
     const questions = quisData.results;
     createQuestions(questions);
