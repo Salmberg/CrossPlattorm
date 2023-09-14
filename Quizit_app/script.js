@@ -33,7 +33,17 @@ document.getElementById('startButton').addEventListener('click', () => {
     const selectedDifficulty = document.querySelector('.difficulty-item[style="color: green;"]');
     
     if (selectedCategory && selectedDifficulty) {
-        alert(`Starting quiz with Category: ${selectedCategory.textContent} and Difficulty: ${selectedDifficulty.textContent}`);
+
+       // Hide the quiz-container
+       const quizContainer = document.querySelector('.quiz-container');
+       quizContainer.classList.add('hide');
+       console.log('hide the first container')
+
+       // Show the questions-container
+       const questionsContainer = document.querySelector('.questions-container');
+       questionsContainer.classList.remove('hide');
+
+       // alert(`Starting quiz with Category: ${selectedCategory.textContent} and Difficulty: ${selectedDifficulty.textContent}`);
     } else {
         alert('Please select a Category and Difficulty before starting the quiz.');
     }
