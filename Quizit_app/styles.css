@@ -53,7 +53,6 @@ h2 {
     position: relative; /* Add position relative */
 }
 
-
 #startButton {
     width: 100px;
     height: 30px;
@@ -62,6 +61,9 @@ h2 {
     margin-top: 50px;
 }
 
+.question {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
 
 /* Style for the category and difficulty lists */
 .category-header, .difficulty-header {
