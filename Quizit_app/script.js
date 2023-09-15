@@ -50,6 +50,13 @@ function handleItemClick(event) {
     }
 }
 
+function decodeHTMLEntities(text) {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = text;
+    return textarea.value;
+}
+
+
 // Add click event listeners to all category and difficulty items
 categoryItems.forEach(item => {
     item.addEventListener('click', handleItemClick);
@@ -108,7 +115,7 @@ startButton.addEventListener('click', async () => {
 // Function to display the current question within the questions container
 function displayCurrentQuestion() {
     const questionData = questionsData[currentQuestionIndex];
-    const question = questionData.question;
+    const question = decodeHTMLEntities(questionData.question);
     const options = [...questionData.incorrect_answers, questionData.correct_answer].sort(() => Math.random() - 0.5);
 
     const questionElement = createQuestion(question, options);
