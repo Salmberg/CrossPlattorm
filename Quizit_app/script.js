@@ -6,6 +6,32 @@ const questionsContainer = document.querySelector('.questions-container');
 let questionsData = [];
 let currentQuestionIndex = 0;
 
+
+const apiEndpoints = {
+    Mixed: {
+        Easy: 'https://opentdb.com/api.php?amount=10&difficulty=easy',
+        Medium: 'https://opentdb.com/api.php?amount=10&difficulty=medium',
+        Hard: 'https://opentdb.com/api.php?amount=10&difficulty=hard',
+    },
+    Sports: {
+        Easy: 'https://opentdb.com/api.php?amount=10&category=21&difficulty=easy',
+        Medium: 'https://opentdb.com/api.php?amount=10&category=21&difficulty=medium',
+        Hard: 'https://opentdb.com/api.php?amount=10&category=21&difficulty=hard',
+    },
+    History: {
+        Easy: 'https://opentdb.com/api.php?amount=10&category=23&difficulty=easy',
+        Medium: 'https://opentdb.com/api.php?amount=10&category=23&difficulty=medium',
+        Hard: 'https://opentdb.com/api.php?amount=10&category=23&difficulty=hard',
+    },
+    Film: {
+        Easy: 'https://opentdb.com/api.php?amount=10&category=11&difficulty=easy',
+        Medium: 'https://opentdb.com/api.php?amount=10&category=11&difficulty=medium',
+        Hard: 'https://opentdb.com/api.php?amount=10&category=11&difficulty=hard',
+    },
+};
+
+
+
 // Function to handle item click (category or difficulty)
 function handleItemClick(event) {
     const item = event.target;
@@ -33,33 +59,41 @@ difficultyItems.forEach(item => {
     item.addEventListener('click', handleItemClick);
 });
 
-// Function to fetch questions from the API
-async function fetchQuestions() {
-    const apiUrl = 'https://opentdb.com/api.php?amount=10'; // Adjust the URL and parameters as needed
+async function fetchQuestions(category, difficulty) {
+    // Check if the provided category and difficulty are valid keys in your apiEndpoints object
+    if (apiEndpoints[category] && apiEndpoints[category][difficulty]) {
+        const apiUrl = apiEndpoints[category][difficulty];
 
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        return data.results;
-    } catch (error) {
-        console.error('Error fetching questions:', error);
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            return data.results;
+        } catch (error) {
+            console.error('Error fetching questions:', error);
+            return [];
+        }
+    } else {
+        console.error('Invalid category or difficulty:', category, difficulty);
         return [];
     }
 }
 
+
 // Function to start quiz with selected category and difficulty
 startButton.addEventListener('click', async () => {
-    const selectedCategory = document.querySelector('.category-item[style="color: green;"]');
-    const selectedDifficulty = document.querySelector('.difficulty-item[style="color: green;"]');
+    const selectedCategoryElement = document.querySelector('.category-item[style*="color: green;"]');
+    const selectedDifficultyElement = document.querySelector('.difficulty-item[style*="color: green;"]');
 
-    if (selectedCategory && selectedDifficulty) {
+    if (selectedCategoryElement && selectedDifficultyElement) {
+        const selectedCategory = selectedCategoryElement.textContent;
+        const selectedDifficulty = selectedDifficultyElement.textContent;
 
         const quizContainer = document.querySelector('.quiz-container');
         quizContainer.classList.add('hide');
         questionsContainer.classList.remove('hide');
 
-        // Fetch questions from the API
-        questionsData = await fetchQuestions();
+        // Fetch questions from the API based on category and difficulty
+        questionsData = await fetchQuestions(selectedCategory, selectedDifficulty);
         currentQuestionIndex = 0;
 
         // Display the first question
@@ -68,6 +102,7 @@ startButton.addEventListener('click', async () => {
         alert('Please select a Category and Difficulty before starting the quiz.');
     }
 });
+
 
 
 // Function to display the current question within the questions container
@@ -81,6 +116,8 @@ function displayCurrentQuestion() {
     // Clear the questions container and append the new question
     questionsContainer.innerHTML = '';
     questionsContainer.appendChild(questionElement);
+
+
 
     console.log(currentQuestionIndex);
     console.log(questionData);
