@@ -2,7 +2,6 @@ const categoryItems = document.querySelectorAll('.category-item');
 const difficultyItems = document.querySelectorAll('.difficulty-item');
 const startButton = document.getElementById('startButton');
 const questionsContainer = document.querySelector('.questions-container');
-const nextButton = document.getElementById('nextButton');
 
 let questionsData = [];
 let currentQuestionIndex = 0;
@@ -54,7 +53,7 @@ startButton.addEventListener('click', async () => {
     const selectedDifficulty = document.querySelector('.difficulty-item[style="color: green;"]');
 
     if (selectedCategory && selectedDifficulty) {
-        // Hide the quiz-container and show the next button
+
         const quizContainer = document.querySelector('.quiz-container');
         quizContainer.classList.add('hide');
         questionsContainer.classList.remove('hide');
@@ -70,6 +69,7 @@ startButton.addEventListener('click', async () => {
     }
 });
 
+
 // Function to display the current question within the questions container
 function displayCurrentQuestion() {
     const questionData = questionsData[currentQuestionIndex];
@@ -81,7 +81,12 @@ function displayCurrentQuestion() {
     // Clear the questions container and append the new question
     questionsContainer.innerHTML = '';
     questionsContainer.appendChild(questionElement);
+
+    console.log(currentQuestionIndex);
+    console.log(questionData);
+
 }
+
 
 // Function to generate a question element with options
 function createQuestion(questionText, options) {
@@ -110,6 +115,21 @@ function createQuestion(questionText, options) {
         questionElement.appendChild(optionElement);
     });
 
+    const nextButton = document.createElement('button');
+nextButton.textContent = 'Next';
+nextButton.classList.add('next-button');
+nextButton.addEventListener('click', () => {
+    if (currentQuestionIndex < questionsData.length - 1) {
+        currentQuestionIndex++; // Increment the index
+        displayCurrentQuestion(); // Display the next question
+    } else {
+        // This is the last question, you can add your logic here
+        alert('You have completed the quiz!');
+    }
+});
+questionElement.appendChild(nextButton);
+
+    
     return questionElement;
 }
 
