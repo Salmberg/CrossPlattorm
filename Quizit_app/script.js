@@ -132,8 +132,9 @@ function displayCurrentQuestion() {
 }
 
 
-// Function to generate a question element with options
-function createQuestion(questionText, options) {
+function createQuestion(questionText, options, correctAnswer) {
+    let userPoints = 0;
+
     const questionElement = document.createElement('div');
     questionElement.classList.add('question');
 
@@ -147,8 +148,28 @@ function createQuestion(questionText, options) {
 
         const radioInput = document.createElement('input');
         radioInput.type = 'radio';
-        radioInput.name = 'question' + index; // Give each question a unique name
+        radioInput.name = 'question' + currentQuestionIndex; // Use the currentQuestionIndex
         radioInput.value = optionText;
+
+        // Add an event listener to the radio input
+        radioInput.addEventListener('change', (event) => {
+            // Handle the user's selection here, e.g., store the selected answer
+            const selectedAnswer = event.target.value;
+
+            console.log(selectedAnswer + correctAnswer);
+            // Check if the selected answer is correct
+            if (selectedAnswer === correctAnswer) {
+                userPoints++; // Award a point for a correct answer
+            }
+
+            // You can perform actions based on the selected answer
+            console.log(correctAnswer);
+            console.log('Selected Answer:', selectedAnswer);
+            console.log('User Points:', userPoints);
+            
+            // Update the displayed points
+            points.textContent = `Points: ${userPoints}`;
+        });
 
         const optionLabel = document.createElement('label');
         optionLabel.textContent = optionText;
@@ -159,22 +180,22 @@ function createQuestion(questionText, options) {
         questionElement.appendChild(optionElement);
     });
 
-    const nextButton = document.createElement('button');
-nextButton.textContent = 'Next';
-nextButton.classList.add('next-button');
-nextButton.addEventListener('click', () => {
-    if (currentQuestionIndex < questionsData.length - 1) {
-        currentQuestionIndex++; // Increment the index
-        displayCurrentQuestion(); // Display the next question
-    } else {
-        // This is the last question, you can add your logic here
-        alert('You have completed the quiz!');
-    }
-});
-questionElement.appendChild(nextButton);
+    const points = document.createElement('text');
+    points.textContent = `Points: ${userPoints}`;
+    questionElement.appendChild(points);
 
-    
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Next';
+    nextButton.classList.add('next-button');
+    nextButton.addEventListener('click', () => {
+        if (currentQuestionIndex < questionsData.length - 1) {
+            currentQuestionIndex++; // Increment the index
+            displayCurrentQuestion(); // Display the next question
+        } else {
+            // This is the last question, you can add your logic here
+            alert('You have completed the quiz!');
+        }
+    });
+    questionElement.appendChild(nextButton);
     return questionElement;
 }
-
-
