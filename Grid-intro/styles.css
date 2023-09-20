@@ -1,0 +1,184 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Poppins:wght@700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/made-outer-sans-alt');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Bebas+Neue&family=Grape+Nuts&family=Poppins:wght@700&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    height: 100vh;
+}
+
+.grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns:1fr 1fr ;
+    grid-template-rows: 8em 1fr 4em;
+}
+
+.grid > div {
+    margin: 0px;
+}
+
+.header, .footer {
+    grid-column: 1 / 4;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; /* Aligns content at the start and end of the container */
+    align-items: center; /* Aligns items vertically */
+    font-size: xx-large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    top: 0;
+    padding: 20px; /* Add some padding for spacing */
+    background-color: black;
+}
+
+#name {
+    display: flex;
+    justify-content: space-between; /* Aligns content at the start and end of the container */
+    align-items: center; /* Aligns items vertically */
+    font-size: 40px;
+    font-family: 'MADE Outer Sans Alt', sans-serif;
+    top: 0;
+    padding: 10px; /* Add some padding for spacing */
+    background-color: black;
+    color: white;
+    line-height: 1;
+}
+#text {
+    
+    line-height: 1; /* Adjust the line-height to reduce spacing between lines */
+}
+
+.line2 {
+    font-size: 38px; /* Adjust the font size as needed */
+    color: white; /* Change the color as needed */
+    
+}
+
+.line3 {
+    font-size: 38px; /* Adjust the font size as needed */
+    color: #6b21a8; /* Change the color as needed */
+    
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: black;
+    color: white;
+    font-size: 70px;
+    padding-left: 30px;
+    font-family: 'Bebas Neue', sans-serif;;
+    
+}
+
+.image img {
+    display: flex;
+    width: 200px; /* Adjust the width as needed */
+    height: auto; /* This ensures the aspect ratio is maintained */
+    background-color: black;
+    
+}
+
+.image {
+    display: flex; /* Use flexbox to center the image */
+    justify-content: center; /* Horizontally center-align */
+    align-items: center; /* Vertically center-align */
+    background-color: black;
+    height: 100%; /* Ensure the container takes the full height */
+    padding-right: 40px;
+}
+
+
+/* Media query for screens with a max-width of 768px (typical for mobile) */
+@media (max-width: 768px) {
+    .image img {
+        width: 80%; /* Adjust the width as needed for mobile */
+    }
+}
+/* Media query for screens with a min-width of 769px (typical for desktop) */
+@media (min-width: 769px) {
+    .image img {
+        width: 70%; /* Adjust the width as needed for desktop */
+    }
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row; /* Stacks list items in a row */
+    justify-content: center; /* Centers list items vertically */
+    align-items: center; /* Centers list items horizontally */
+    list-style: none;
+    margin: 10; /* Remove default margin for the ul */
+    padding: 0; /* Remove default padding for the ul */
+    
+}
+
+nav ul li {
+    margin: 10px; /* Add margin between list items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: large;
+}
+
+
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    gap: 10px;
+    background-color: black;
+}
+
+.fa-brands {
+    color: white;
+}
+.fab {
+    color: white;
+}
+
+/* CSS for the hamburger menu */
+.menu-icon {
+    display: none; /* Initially hide the menu icon on larger screens */
+    cursor: pointer;
+}
+
+#menu-toggle {
+    background-color: white;
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Media query for screens with a max-width of 768px (typical for mobile) */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Display the menu icon on mobile screens */
+        /* Add styling for the hamburger icon (e.g., bars) */
+    }
+    /* Additional styles for the expanded menu (you can create a class for this) */
+    nav {
+        display: none; /* Initially hide the navigation links on mobile */
+        /* Add styling for the expanded menu */
+    }
+}
+
+
+   
+  
+
+
+    
